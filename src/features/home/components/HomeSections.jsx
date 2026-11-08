@@ -17,6 +17,14 @@ function SectionHeading({ eyebrow, children }) {
   );
 }
 
+function hasCollectionError(query) {
+  return query.isError || !Array.isArray(query.data);
+}
+
+function collectionError(query) {
+  return query.error ?? new Error("The API returned an invalid collection.");
+}
+
 export function BenchmarksSection() {
   const stats = [
     {
@@ -114,10 +122,10 @@ export function UnitsPreview({ query }) {
       <SectionHeading eyebrow="A considered collection">
         Hand-Selected Masterpieces
       </SectionHeading>
-      {query.isLoading ? (
+      {query.isLoading || query.isPending ? (
         <LoadingState label="Loading residences" />
-      ) : query.isError ? (
-        <ErrorState error={query.error} onRetry={query.refetch} />
+      ) : hasCollectionError(query) ? (
+        <ErrorState error={collectionError(query)} onRetry={query.refetch} />
       ) : query.data.length === 0 ? (
         <EmptyState title="No residences available">
           New residences will appear here when they are listed.
@@ -145,10 +153,10 @@ export function ZonesSection({ query }) {
         <SectionHeading>Strategic Locations</SectionHeading>
       </div>
       <div className="map-frame">
-        {query.isLoading ? (
+        {query.isLoading || query.isPending ? (
           <LoadingState label="Loading locations" />
-        ) : query.isError ? (
-          <ErrorState error={query.error} onRetry={query.refetch} />
+        ) : hasCollectionError(query) ? (
+          <ErrorState error={collectionError(query)} onRetry={query.refetch} />
         ) : query.data.length === 0 ? (
           <EmptyState title="No locations listed yet">
             Locations will appear here when zones are published.
@@ -178,10 +186,10 @@ export function ProjectsSection({ query }) {
       <SectionHeading eyebrow="Designed for what comes next">
         Future Landmarks
       </SectionHeading>
-      {query.isLoading ? (
+      {query.isLoading || query.isPending ? (
         <LoadingState label="Loading projects" />
-      ) : query.isError ? (
-        <ErrorState error={query.error} onRetry={query.refetch} />
+      ) : hasCollectionError(query) ? (
+        <ErrorState error={collectionError(query)} onRetry={query.refetch} />
       ) : query.data.length === 0 ? (
         <EmptyState title="No projects available">
           Project details will appear here when they are published.

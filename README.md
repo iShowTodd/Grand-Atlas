@@ -7,7 +7,7 @@ TanStack Query, React Hook Form, Zod, and React Helmet Async.
 
 1. Install Node.js 20.19+ and npm.
 2. Copy `.env.example` to `.env`.
-3. Set `VITE_API_BASE_URL` to `/api/v4`. Vercel proxies this path to the
+3. Set `VITE_API_BASE_URL` to `/api/v1`. Vercel proxies this path to the
    production API.
 4. Set `VITE_SITE_URL` to the deployed website origin, such as
    `https://grand-atlas.vercel.app`.
