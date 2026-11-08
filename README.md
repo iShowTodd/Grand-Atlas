@@ -7,14 +7,16 @@ TanStack Query, React Hook Form, Zod, and React Helmet Async.
 
 1. Install Node.js 20.19+ and npm.
 2. Copy `.env.example` to `.env`.
-3. Set `VITE_API_BASE_URL` to the API base, `VITE_SITE_URL` to the deployed
-   website origin, and `VITE_MAP_TILE_URL` to an OpenStreetMap-compatible tile
-   URL.
-4. Run `npm install` and `npm run dev`.
+3. Set `VITE_API_BASE_URL` to the full HTTPS API base URL, including its API
+   path (for example, `https://api.example.com/api/v1`).
+4. Set `VITE_SITE_URL` to the deployed website origin.
+5. Run `npm install` and `npm run dev`.
 
-The app stops with a clear error if `VITE_API_BASE_URL` is missing. The live
-zone API does not include coordinates; `/map` uses approximate zone-center
-coordinates from `src/features/map/data/locations.ts`.
+The app stops with a clear error if `VITE_API_BASE_URL` is missing; production
+builds also require it to be a full HTTPS URL. Configure both
+`VITE_API_BASE_URL` and `VITE_SITE_URL` in the hosting dashboard before the
+production build. The live zone API does not include coordinates; `/map` uses
+approximate zone-center coordinates from `src/features/map/data/locations.ts`.
 The production API must allow the deployed website origin through its CORS
 configuration for browser requests to succeed. Set `VITE_SITE_URL` to the
 public website origin before building so the generated sitemap and robots file
