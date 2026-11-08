@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
-Sitemap: https://your-domain.example/sitemap.xml
+Sitemap: https://grand-atlas.vercel.app/sitemap.xml

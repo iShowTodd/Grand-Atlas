@@ -1,13 +1,16 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import vercelConfig from "./vercel.json" with { type: "json" };
+
+const apiProxyTarget = new URL(vercelConfig.rewrites[0].destination).origin;
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     proxy: {
       "/api": {
-        target: "https://white-seahorse-266682.hostingersite.com",
+        target: apiProxyTarget,
         changeOrigin: true,
       },
     },

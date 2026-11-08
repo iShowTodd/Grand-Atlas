@@ -5,7 +5,7 @@
       "destination": "https://white-seahorse-266682.hostingersite.com/api/:path*"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
   ]
