@@ -3,13 +3,18 @@ import { HelmetProvider } from "react-helmet-async";
 import { useState } from "react";
 import { AuthProvider } from "./auth-context";
 
+function shouldRetryQuery(failureCount, error) {
+  const status = error?.response?.status;
+  return failureCount < 1 && (status === undefined || status >= 500);
+}
+
 export function AppProviders({ children }) {
   const [queryClient] = useState(
     () =>
       new QueryClient({
         defaultOptions: {
           queries: {
-            retry: 1,
+            retry: shouldRetryQuery,
             refetchOnWindowFocus: false,
           },
         },
