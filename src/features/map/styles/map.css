@@ -1,0 +1,85 @@
+.atlas-map-marker {
+  position: relative;
+  background: transparent;
+  border: 0;
+}
+
+.atlas-map-pin {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  width: 28px;
+  height: 28px;
+  transform: translateX(-50%);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: var(--atlas-red, #8e1616);
+  box-shadow: 0 3px 10px rgb(10 20 47 / 28%);
+  transition: width 160ms ease, height 160ms ease;
+}
+
+.atlas-map-pin::before {
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  border-top: 9px solid var(--atlas-red, #8e1616);
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+  content: "";
+}
+
+.atlas-map-pin-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #fff;
+}
+
+.atlas-map-marker-active .atlas-map-pin {
+  width: 36px;
+  height: 36px;
+  box-shadow: 0 5px 14px rgb(10 20 47 / 38%);
+}
+
+.atlas-map-marker-active .atlas-map-pin-center {
+  width: 9px;
+  height: 9px;
+}
+
+.atlas-map .leaflet-popup-content-wrapper {
+  border-radius: 12px;
+  box-shadow: 0 8px 26px rgb(10 20 47 / 18%);
+}
+
+.atlas-map .leaflet-popup-content {
+  display: grid;
+  min-width: 150px;
+  gap: 6px;
+  margin: 14px 18px;
+  color: var(--atlas-ink, #0a142f);
+  font-family: var(--atlas-sans, "Lato", sans-serif);
+}
+
+.atlas-map .leaflet-popup-content strong {
+  color: var(--atlas-ink, #0a142f);
+  font-size: 15px;
+}
+
+.atlas-map .leaflet-popup-content a {
+  width: fit-content;
+  color: var(--atlas-red, #8e1616);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.atlas-map .leaflet-popup-tip {
+  box-shadow: 0 4px 10px rgb(10 20 47 / 10%);
+}

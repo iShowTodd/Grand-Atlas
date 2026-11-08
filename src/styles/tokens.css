@@ -1,0 +1,14 @@
+:root {
+  font-family: "Lato", sans-serif;
+  color: #201b1a;
+  background: #fff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --atlas-red: #8e1616;
+  --atlas-coral: #c34b4b;
+  --atlas-ink: #0a142f;
+  --atlas-muted: #746e6c;
+  --atlas-line: #e8e4e2;
+  --atlas-serif: "Playfair Display", Georgia, serif;
+}
