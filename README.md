@@ -7,13 +7,13 @@ TanStack Query, React Hook Form, Zod, and React Helmet Async.
 
 1. Install Node.js 20.19+ and npm.
 2. Copy `.env.example` to `.env`.
-3. Set `VITE_API_BASE_URL` to the full HTTPS API base URL, including its API
-   path (for example, `https://api.example.com/api/v1`).
+3. Set `VITE_API_BASE_URL` to `/api/v1`. Vercel proxies this path to the
+   production API.
 4. Set `VITE_SITE_URL` to the deployed website origin.
 5. Run `npm install` and `npm run dev`.
 
 The app stops with a clear error if `VITE_API_BASE_URL` is missing; production
-builds also require it to be a full HTTPS URL. Configure both
+builds also require it to be a same-origin path. Configure both
 `VITE_API_BASE_URL` and `VITE_SITE_URL` in the hosting dashboard before the
 production build. The live zone API does not include coordinates; `/map` uses
 approximate zone-center coordinates from `src/features/map/data/locations.ts`.

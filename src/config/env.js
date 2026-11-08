@@ -6,21 +6,14 @@ if (!configuredApiBaseUrl) {
   );
 }
 
-if (import.meta.env.PROD) {
-  let apiUrl;
-  try {
-    apiUrl = new URL(configuredApiBaseUrl);
-  } catch {
-    throw new Error(
-      "VITE_API_BASE_URL must be a full HTTPS URL in production.",
-    );
-  }
-
-  if (apiUrl.protocol !== "https:" || !apiUrl.hostname) {
-    throw new Error(
-      "VITE_API_BASE_URL must be a full HTTPS URL in production.",
-    );
-  }
+if (
+  import.meta.env.PROD &&
+  (!configuredApiBaseUrl.startsWith("/") ||
+    configuredApiBaseUrl.startsWith("//"))
+) {
+  throw new Error(
+    "VITE_API_BASE_URL must be a same-origin path in production.",
+  );
 }
 
 export const API_BASE_URL = configuredApiBaseUrl.replace(/\/+$/, "");
